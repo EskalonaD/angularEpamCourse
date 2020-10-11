@@ -1,1 +1,2 @@
-- First Component were created
+- First Component was created
+- Product Component was created
