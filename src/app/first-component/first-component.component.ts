@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../cart.service';
 
 enum ProductCategory {
   Cars = 'Машины',

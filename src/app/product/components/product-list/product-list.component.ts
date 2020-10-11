@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { ProductModel } from '../model/model';
-import { ProductService } from '../product.service';
+import { map } from 'rxjs/operators';
+
+import { ProductModel } from '../../../model/model';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -15,16 +17,12 @@ export class ProductListComponent implements OnInit {
   constructor(private products: ProductService) { }
 
   ngOnInit(): void {
-    // this.products.getProducts().pipe(
-    //   tap(),
-    //   ).subscribe({next: products => this.productList = this.filterEmpty(products || [])});
-
       this.productList = this.products.getProducts().pipe(
-        map( products => this.filterEmpty(products || []))
-      )
+        map( products => this.filterEmpty(products || [])),
+      );
   }
 
-  filterEmpty(arr: ProductModel[]): ProductModel[] {
+  private filterEmpty(arr: ProductModel[]): ProductModel[] {
     return arr.filter(product => product.amount !== 0);
   }
 }

@@ -6,5 +6,3 @@ export interface ProductModel {
     currency?: string;
     description?: string;
 }
-
-// export type Price = [currency: string, amount:  string];

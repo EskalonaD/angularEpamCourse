@@ -1,7 +1,9 @@
-<div class="cart-wrapper" *ngIf='shouldShowCart'>
-    <app-cart-list *ngIf='!cartEmpty; else elseBlock' (cartEmptyChange)='onCartChange($event)'></app-cart-list>
+<div class='cart-wrapper' *ngIf='shouldShowCart'>
+    <app-cart-list
+        *ngIf='!cartEmpty; else elseBlock'
+        (cartEmptinessChange)='onCartChange($event)'
+    ></app-cart-list>
     <ng-template #elseBlock>
-
         <div>Корзина пуста</div>
     </ng-template>
     <button (click)='hideCart()'>Закрыть Корзину</button>

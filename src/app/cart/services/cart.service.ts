@@ -1,8 +1,10 @@
-import { CurrencyPipe } from '@angular/common';
 import { Injectable } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+
 import { Observable, of } from 'rxjs';
-import { DataStorageService } from './data-storage.service';
-import { ProductModel } from './model/model';
+
+import { DataStorageService } from './../../data-storage.service';
+import { ProductModel } from './../../model/model';
 
 interface PriceMap {
   [currency: string]: {
@@ -15,12 +17,10 @@ interface PriceMap {
   providedIn: 'root'
 })
 export class CartService {
-
   constructor(private currency: CurrencyPipe, private storage: DataStorageService) { }
-  cartItems
 
   getCartItems(): Observable<ProductModel[]> {
-    return this.storage.cartItems.pipe();
+    return this.storage.cartItems;
   }
 
   makeOrder(arr: ProductModel[]): void {
@@ -60,7 +60,7 @@ export class CartService {
     this.storage.cartItems = of([]);
   }
 
-  private createOrder(products: ProductModel[]): void { //
+  private createOrder(products: ProductModel[]): void {
     // TODO: Implement after API will be created
   }
 }

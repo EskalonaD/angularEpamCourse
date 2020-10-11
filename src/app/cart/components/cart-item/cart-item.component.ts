@@ -1,6 +1,7 @@
-import { CurrencyPipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductModel } from '../model/model';
+import { CurrencyPipe } from '@angular/common';
+
+import { ProductModel } from '../../../model/model';
 
 @Component({
   selector: 'app-cart-item',
@@ -9,6 +10,7 @@ import { ProductModel } from '../model/model';
 })
 export class CartItemComponent implements OnInit {
   @Input() cartItem: ProductModel;
+
   totalPrice: string;
 
   constructor(private currency: CurrencyPipe) { }

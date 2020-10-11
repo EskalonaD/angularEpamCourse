@@ -1,9 +1,10 @@
-import { CurrencyPipe } from '@angular/common';
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+
+import { Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { CartService } from '../cart.service';
-import { ProductModel } from '../model/model';
+
+import { CartService } from '../../services/cart.service';
+import { ProductModel } from '../../../model/model';
 
 
 @Component({
@@ -12,12 +13,14 @@ import { ProductModel } from '../model/model';
   styleUrls: ['./cart-list.component.scss']
 })
 export class CartListComponent implements OnInit, OnDestroy {
-  @Output() cartEmptyChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() cartEmptinessChange: EventEmitter<boolean> = new EventEmitter();
+
   totalPrice: string[];
   cartItems: ProductModel[];
+
   private cartItemsSubscription: Subscription;
 
-  constructor(private currency: CurrencyPipe, private cartService: CartService) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.cartItemsSubscription = this.cartService.getCartItems().pipe(
@@ -26,8 +29,8 @@ export class CartListComponent implements OnInit, OnDestroy {
       next: cartItems => {
         this.cartItems = cartItems;
         this.totalPrice = this.cartService.getTotalPriceArr(cartItems);
-    }});
-    // this.totalPrice = this.cartService.getTotalPriceArr();
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -35,7 +38,6 @@ export class CartListComponent implements OnInit, OnDestroy {
   }
 
   onBuy(phoneNumber: string, cartItems: ProductModel[]): void {
-    console.log('cartItems async', cartItems)
     if (phoneNumber === undefined || Number.isNaN(+phoneNumber) || !Number.isInteger(+phoneNumber)) {
       alert('Некорректный номер. Попробуйте еще раз.');
     }
@@ -47,7 +49,6 @@ export class CartListComponent implements OnInit, OnDestroy {
 
   clearCart(): void {
     this.cartService.clearCart();
-    this.cartEmptyChange.emit(true);
+    this.cartEmptinessChange.emit(true);
   }
-
 }

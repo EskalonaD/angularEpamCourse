@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+
 import { Observable, of } from 'rxjs';
+
 import { ProductModel } from './model/model';
 
 @Injectable({
