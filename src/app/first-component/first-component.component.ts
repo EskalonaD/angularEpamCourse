@@ -28,4 +28,8 @@ export class FirstComponent implements OnInit {
     this.isAvailable = false;
   }
 
+  checkIfContentValid(category: ProductCategory): void {
+    this.isAvailable = category === ProductCategory.Cars;
+  }
+
 }

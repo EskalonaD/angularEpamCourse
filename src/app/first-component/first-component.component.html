@@ -3,11 +3,11 @@
     <h2 class="description">{{description}}</h2>
     <div class="menu-panel">
         <div class="menu-items-wrapper">
-            <div *ngFor='let menuItem of category | keyvalue' class='menu-item'> {{ menuItem.value }}</div>
+            <div *ngFor='let menuItem of category | keyvalue' class='menu-item' (click)='checkIfContentValid(menuItem.value)'> {{ menuItem.value }}</div>
         </div>
         <div class="separator"></div>
     </div>
     <div class="content">
-        <p>Доступность контента: {{ isAvailable }}</p>
+        <p>Отображаемый контент корректен: {{ isAvailable }}</p>
     </div>
 </div>
