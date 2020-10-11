@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { DataStorageService } from '../../data-storage.service';
+import { DataStorageService } from '../../api-facade/data-storage.service';
 import { ProductModel } from '../../model/model';
 
 @Injectable({

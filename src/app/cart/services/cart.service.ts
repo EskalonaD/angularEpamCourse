@@ -3,7 +3,7 @@ import { CurrencyPipe } from '@angular/common';
 
 import { Observable, of } from 'rxjs';
 
-import { DataStorageService } from './../../data-storage.service';
+import { DataStorageService } from './../../api-facade/data-storage.service';
 import { ProductModel } from './../../model/model';
 
 interface PriceMap {
