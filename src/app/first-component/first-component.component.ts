@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '../cart.service';
 
 enum ProductCategory {
   Cars = 'Машины',
@@ -26,6 +27,7 @@ export class FirstComponent implements OnInit {
     this.description = 'Лучший магазин для всех';
     this.category = ProductCategory;
     this.isAvailable = false;
+
   }
 
   checkIfContentValid(category: ProductCategory): void {

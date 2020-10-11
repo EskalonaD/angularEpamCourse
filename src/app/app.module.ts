@@ -7,6 +7,9 @@ import { FirstComponent } from './first-component/first-component.component';
 import { ProductComponent } from './product-component/product-component.component';
 import { DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { ProductListComponent } from './product-list/product-list.component';
+import { CartListComponent } from './cart-list/cart-list.component';
+import { CartItemComponent } from './cart-item/cart-item.component';
+import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -14,6 +17,8 @@ import { ProductListComponent } from './product-list/product-list.component';
     FirstComponent,
     ProductComponent,
     ProductListComponent,
+    CartListComponent,
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +26,7 @@ import { ProductListComponent } from './product-list/product-list.component';
   ],
   providers: [
     {provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR'},
+    CurrencyPipe,
 ],
   bootstrap: [AppComponent]
 })

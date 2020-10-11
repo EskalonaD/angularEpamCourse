@@ -1,0 +1,14 @@
+<div class="wrapper">
+    <h2>Корзина</h2>
+    <div class='controls'>
+        <div class="confirm-buy">
+            <p>Total price:</p>
+            <div *ngFor='let price of totalPrice'>{{ price }}</div>
+            <p>Чтобы подтвердить покупку введите номер телефона и нажмите "купить"</p>
+            <input type='number' #phoneNumber>
+            <button (click)='onBuy(phoneNumber.value)'>Buy</button>
+        </div>
+        <button (click)='clearCart()'>Очистить Корзину</button>
+    </div>
+    <app-cart-item *ngFor='let cartItem of cartItems' [cartItem]='cartItem'></app-cart-item>
+</div>
