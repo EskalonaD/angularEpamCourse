@@ -9,7 +9,7 @@ import { DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CartListComponent } from './cart-list/cart-list.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { CurrencyPipe } from '@angular/common';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule,
   ],
   providers: [
     {provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR'},

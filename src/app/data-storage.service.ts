@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { ProductModel } from './model/model';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { ProductModel } from './model/model';
 export class DataStorageService {
   constructor() { }
 
-  products: ProductModel[] = [
+  products: Observable<ProductModel[]> = of([
     {
       name: 'Запорожец стандарт',
       priceMin: 5000,
@@ -37,9 +38,9 @@ export class DataStorageService {
       priceMax: 150000,
       amount: 25,
     },
-  ];
+  ]);
 
-  cartItems: ProductModel[] = [
+  cartItems: Observable<ProductModel[]> = of([
     {
       name: 'Запорожец стандарт',
       priceMin: 5000,
@@ -48,5 +49,5 @@ export class DataStorageService {
       amount: 1,
       currency: 'UAH',
     },
-  ];
+  ]);
 }

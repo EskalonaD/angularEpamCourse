@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { CartService } from './cart.service';
 
 @Component({
@@ -11,13 +13,20 @@ export class AppComponent {
   title = 'shop';
 
   shouldShowCart: boolean;
+  cartEmpty: boolean;
 
   showCart(): void {
     this.shouldShowCart = true;
   }
 
-  get cartEmpty() {
-    return !this.cartService.getCartItems().length;
+  // cartEmpty(): Observable<boolean> {
+  //   console.log('here')
+  //   return this.cartService.getCartItems().pipe( tap(x => console.log(x)),map(cartItems => !cartItems.length),);
+  //   // return true;
+  // }
+
+  onCartChange(isCartEmpty: boolean) {
+    this.cartEmpty = isCartEmpty;
   }
 
   hideCart(): void {

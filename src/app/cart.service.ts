@@ -1,5 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { DataStorageService } from './data-storage.service';
 import { ProductModel } from './model/model';
 
@@ -16,13 +17,14 @@ interface PriceMap {
 export class CartService {
 
   constructor(private currency: CurrencyPipe, private storage: DataStorageService) { }
+  cartItems
 
-  getCartItems(): ProductModel[] {
-    return this.storage.cartItems;
+  getCartItems(): Observable<ProductModel[]> {
+    return this.storage.cartItems.pipe();
   }
 
-  makeOrder(): void {
-    this.createOrder(this.getCartItems());
+  makeOrder(arr: ProductModel[]): void {
+    this.createOrder(arr);
     this.deleteCartItems();
   }
 
@@ -30,8 +32,7 @@ export class CartService {
     this.deleteCartItems();
   }
 
-  getTotalPriceArr(): string[] {
-    const cartItems = this.getCartItems();
+  getTotalPriceArr(cartItems: ProductModel[]): string[] {
     const priceMap: PriceMap = cartItems.reduce((acc: object, cartItem) => {
       if (!acc[cartItem.currency]) {
         acc[cartItem.currency] = {
@@ -56,7 +57,7 @@ export class CartService {
   }
 
   private deleteCartItems(): void {
-    this.storage.cartItems = [];
+    this.storage.cartItems = of([]);
   }
 
   private createOrder(products: ProductModel[]): void { //

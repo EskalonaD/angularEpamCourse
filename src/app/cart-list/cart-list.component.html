@@ -6,7 +6,7 @@
             <div *ngFor='let price of totalPrice'>{{ price }}</div>
             <p>Чтобы подтвердить покупку введите номер телефона и нажмите "купить"</p>
             <input type='number' #phoneNumber>
-            <button (click)='onBuy(phoneNumber.value)'>Buy</button>
+            <button (click)='onBuy(phoneNumber.value, cartItems)'>Buy</button>
         </div>
         <button (click)='clearCart()'>Очистить Корзину</button>
     </div>
