@@ -1,22 +1,48 @@
+:host {
+    flex-basis: 300px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    justify-content: space-around;
+}
+
+
 .wrapper {
+    max-width: 350px;
     border: 3px solid #000;
-    max-width: 500px;
+    border-radius: 25px;
+    margin: 10px;
+    overflow: hidden;
+    flex-basis: auto;
 
     .title {
         height: 50px;
         text-align: center;
         background-color: rgb(6, 68, 238);
         font-size: 20px;
-        color: #dadada;
+        vertical-align: middle;
+        line-height: 200%;
+        color: #e2e2e2;
     }
 
     .content {
         padding: 20px 10px;
         border: 1px solid #000;
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .description {
+            font-weight: bold;
+        }
     }
 
     button {
+        width: 100%;
+        margin-right: 0px;
         padding: 20px 10px;
         border: 1px solid #000;
+        cursor: pointer;
     }
 }

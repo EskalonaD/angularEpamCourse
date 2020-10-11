@@ -1,9 +1,9 @@
 <div class="wrapper">
     <div class="title">{{ product.name }}</div>
     <div class="content">
-        <p *ngIf='product.description'>{{ product.description }}</p>
-        <p>Цена в минимальной комплектации: {{ product.priceMin | currency : product.currency }}</p>
-        <p>Цена в лучшей комплектации: {{ product.priceMax }}</p>
+        <p *ngIf='product.description' class='description'>{{ product.description }}</p>
+        <p >Цена в минимальной комплектации: {{ product.priceMin | currency : product.currency : 'symbol' : '1.0-0' }}</p>
+        <p>Цена в лучшей комплектации: {{ product.priceMax | currency : product.currency : 'symbol' : '1.0-0' }}</p>
         <p>Осталось: {{ product.amount }}</p>
     </div>
     <button (click)='onBuy()'>Buy</button>
