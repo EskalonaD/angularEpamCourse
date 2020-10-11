@@ -38,4 +38,15 @@ export class DataStorageService {
       amount: 25,
     },
   ];
+
+  cartItems: ProductModel[] = [
+    {
+      name: 'Запорожец стандарт',
+      priceMin: 5000,
+      priceMax: 6000,
+      description: 'Нестареющая классика',
+      amount: 1,
+      currency: 'UAH',
+    },
+  ];
 }

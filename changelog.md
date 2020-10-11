@@ -5,3 +5,6 @@
 - product list component was created
 - product component was updated to fit productModel
 - enitities namings updated
+- cart list component was added
+- cart item component was added
+- cart service component was added

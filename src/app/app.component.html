@@ -1,2 +1,11 @@
+<div class="cart-wrapper" *ngIf='shouldShowCart'>
+    <app-cart-list *ngIf='!cartEmpty; else elseBlock'></app-cart-list>
+    <ng-template #elseBlock>
+
+        <div>Корзина пуста</div>
+    </ng-template>
+    <button (click)='hideCart()'>Закрыть Корзину</button>
+</div>
 <app-first-component></app-first-component>
-<app-product-list></app-product-list>
+<button class='open-cart-button' (click)='showCart()'>Открыть Корзину</button>
+<app-product-list  *ngIf='!shouldShowCart'></app-product-list>
