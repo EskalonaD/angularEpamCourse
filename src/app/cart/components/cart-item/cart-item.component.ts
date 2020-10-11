@@ -16,12 +16,12 @@ export class CartItemComponent implements OnInit {
   constructor(private currency: CurrencyPipe) { }
 
   ngOnInit(): void {
-    this.totalPrice = this.getTotalPrice(this.cartItem.priceMin, this.cartItem.priceMax, this.cartItem.amount);
+    this.totalPrice = this.getTotalPrice(this.cartItem.priceMin, this.cartItem.priceMax);
   }
 
-  getTotalPrice(priceMin: number, priceMax: number, amount: number): string {
-    const showedPriceMax = this.currency.transform(priceMax * amount, this.cartItem.currency, 'symbol', '1.0-0');
-    const showedPriceMin = this.currency.transform(priceMin * amount, this.cartItem.currency, 'symbol', '1.0-0');
+  getTotalPrice(priceMin: number, priceMax: number): string {
+    const showedPriceMax = this.currency.transform(priceMax, this.cartItem.currency, 'symbol', '1.0-0');
+    const showedPriceMin = this.currency.transform(priceMin, this.cartItem.currency, 'symbol', '1.0-0');
     return `${showedPriceMin} - ${showedPriceMax}`;
   }
 }
