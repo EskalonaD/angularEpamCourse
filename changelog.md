@@ -1,2 +1,7 @@
 - First Component was created
 - Product Component was created
+- data storage service was created
+- product  service was created
+- product list component was created
+- product component was updated to fit productModel
+- enitities namings updated
