@@ -48,8 +48,22 @@ export class DataStorageService {
       priceMin: 5000,
       priceMax: 6000,
       description: 'Нестареющая классика',
+      amount: 2,
+      currency: 'UAH',
+    },
+    {
+      name: 'Запорожец кабриолет',
+      priceMin: 50000,
+      priceMax: 150000,
+      description: 'Пользоваться любимым автомобилем стало еще приятнее.',
       amount: 1,
       currency: 'UAH',
+    },
+    {
+      name: 'Тесла Model S',
+      priceMin: 50000,
+      priceMax: 150000,
+      amount: 1,
     },
   ]);
 }
