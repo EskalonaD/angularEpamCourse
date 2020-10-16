@@ -14,6 +14,8 @@ import { ProductService } from '../../services/product.service';
 export class ProductListComponent implements OnInit {
   productList: Observable<ProductModel[]>;
 
+  // я бы именовал название сервиса так же как и сам класс, только начинал с нижнего регистра
+  // на мой взгляд, такой код является более читаемым
   constructor(private products: ProductService) { }
 
   ngOnInit(): void {
