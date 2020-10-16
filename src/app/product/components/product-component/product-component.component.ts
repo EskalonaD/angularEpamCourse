@@ -14,3 +14,4 @@ export class ProductComponent {
     console.log('Товар куплен');
   }
 }
+// тут надо поправить название - убрать суффикс - component

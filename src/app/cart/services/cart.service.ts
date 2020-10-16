@@ -32,6 +32,8 @@ export class CartService {
     this.deleteCartItems();
   }
 
+  // думаю, что такая логика не должна присутствовать в компоненте,
+  // может быть ее вынести во вспомагательный сервис
   getTotalPriceArr(cartItems: ProductModel[]): string[] {
     const priceMap: PriceMap = cartItems.reduce((acc: object, cartItem) => {
       if (!acc[cartItem.currency]) {

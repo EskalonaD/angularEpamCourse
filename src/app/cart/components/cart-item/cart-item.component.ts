@@ -19,6 +19,8 @@ export class CartItemComponent implements OnInit {
     this.totalPrice = this.getTotalPrice(this.cartItem.priceMin, this.cartItem.priceMax);
   }
 
+  // может быть попробовать организовать это преобразование в шаблоне?
+  // тогда не нужна будет зависимость, не нужен будет этот метод
   getTotalPrice(priceMin: number, priceMax: number): string {
     const showedPriceMax = this.currency.transform(priceMax, this.cartItem.currency, 'symbol', '1.0-0');
     const showedPriceMin = this.currency.transform(priceMin, this.cartItem.currency, 'symbol', '1.0-0');
