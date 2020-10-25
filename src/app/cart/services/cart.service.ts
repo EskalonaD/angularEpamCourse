@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 
 import { DataStorageService } from './../../api-facade/data-storage.service';
 import { ProductModel } from './../../model/model';
+import { CartModule } from '../module/cart.module';
 
 interface PriceMap {
   [currency: string]: {
@@ -14,7 +15,7 @@ interface PriceMap {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: CartModule,
 })
 export class CartService {
   constructor(private currency: CurrencyPipe, private storage: DataStorageService) { }

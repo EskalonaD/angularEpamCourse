@@ -4,9 +4,10 @@ import { Observable } from 'rxjs';
 
 import { DataStorageService } from '../../api-facade/data-storage.service';
 import { ProductModel } from '../../model/model';
+import { ProductsModule } from '../module/products.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: ProductsModule,
 })
 export class ProductService {
   constructor(private storage: DataStorageService) { }

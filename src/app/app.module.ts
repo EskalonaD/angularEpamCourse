@@ -8,8 +8,8 @@ import { AppComponent } from './app.component';
 import { FirstComponent } from './first-component/first-component.component';
 import { ProductComponent } from './product/components/product-component/product-component.component';
 import { ProductListComponent } from './product/components/product-list/product-list.component';
-import { CartListComponent } from './cart/components/cart-list/cart-list.component';
-import { CartItemComponent } from './cart/components/cart-item/cart-item.component';
+import { CartModule } from './cart/module/cart.module';
+import { ProductsModule } from './product/module/products.module';
 
 @NgModule({
   declarations: [
@@ -17,13 +17,13 @@ import { CartItemComponent } from './cart/components/cart-item/cart-item.compone
     FirstComponent,
     ProductComponent,
     ProductListComponent,
-    CartListComponent,
-    CartItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
+    CartModule,
+    ProductsModule,
   ],
   providers: [
     {provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR'},
