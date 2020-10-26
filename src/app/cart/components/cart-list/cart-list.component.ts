@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 
 import { Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 import { CartService } from '../../services/cart.service';
 import { ProductModel } from '../../../model/model';
@@ -23,9 +22,7 @@ export class CartListComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.cartItemsSubscription = this.cartService.getCartItems().pipe(
-      // tap(cartItems => this.totalPrice = this.cartService.getTotalPriceArr(cartItems)),
-    ).subscribe({
+    this.cartItemsSubscription = this.cartService.getCartItems().subscribe({
       next: cartItems => {
         this.cartItems = cartItems;
         this.totalPrice = this.cartService.getTotalPriceArr(cartItems);

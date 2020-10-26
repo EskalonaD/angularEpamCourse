@@ -14,14 +14,12 @@ interface PriceMap {
   };
 }
 
-@Injectable({
-  providedIn: CartModule,
-})
+@Injectable()
 export class CartService {
   constructor(private currency: CurrencyPipe, private storage: DataStorageService) { }
 
   getCartItems(): Observable<ProductModel[]> {
-    return this.storage.cartItems;
+    return this.storage.getCartItems();
   }
 
   makeOrder(arr: ProductModel[]): void {
@@ -58,7 +56,7 @@ export class CartService {
   }
 
   private deleteCartItems(): void {
-    this.storage.cartItems = of([]);
+    this.storage.deleteCartItems();
   }
 
   private createOrder(products: ProductModel[]): void {

@@ -1,6 +1,12 @@
 <div class="wrapper">
     <app-product
         *ngFor='let product of productList | async'
-        [product]='product'
+        [name]='product.name'
+        [description]='product.description'
+        [currency]='product .currency'
+        [priceMin]='product.priceMin'
+        [priceMax]='product.priceMax'
+        [isAvailable]='product.isAvailable'
+        (buy)='onBuy($event)'
     ></app-product>
 </div>

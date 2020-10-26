@@ -6,8 +6,6 @@ import { DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstComponent } from './first-component/first-component.component';
-import { ProductComponent } from './product/components/product-component/product-component.component';
-import { ProductListComponent } from './product/components/product-list/product-list.component';
 import { CartModule } from './cart/module/cart.module';
 import { ProductsModule } from './product/module/products.module';
 
@@ -15,8 +13,6 @@ import { ProductsModule } from './product/module/products.module';
   declarations: [
     AppComponent,
     FirstComponent,
-    ProductComponent,
-    ProductListComponent,
   ],
   imports: [
     BrowserModule,

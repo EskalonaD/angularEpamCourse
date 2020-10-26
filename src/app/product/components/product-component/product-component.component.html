@@ -1,14 +1,13 @@
 <div class="wrapper">
-    <div class="title">{{ product.name }}</div>
+    <div class="title">{{ name }}</div>
     <div class="content">
-        <p *ngIf='product.description' class='description'>{{ product.description }}</p>
+        <p *ngIf='description' class='description'>{{ description }}</p>
         <p>
-            Цена в минимальной комплектации: {{ product.priceMin | currency : product.currency : 'symbol' : '1.0-0' }}
+            Цена в минимальной комплектации: {{ priceMin | currency : currency : 'symbol' : '1.0-0' }}
         </p>
         <p>
-            Цена в лучшей комплектации: {{ product.priceMax | currency : product.currency : 'symbol' : '1.0-0' }}
+            Цена в лучшей комплектации: {{ priceMax | currency : currency : 'symbol' : '1.0-0' }}
         </p>
-        <p>Осталось: {{ product.amount }}</p>
     </div>
-    <button (click)='onBuy()'>Купить</button>
+    <button [disabled]="!isAvailable" (click)='onBuy()'>Купить</button>
 </div>
