@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 
 import { ProductModel } from '../../../model/model';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product-component.component.html',
-  styleUrls: ['./product-component.component.scss']
+  styleUrls: ['./product-component.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductComponent implements OnChanges{
   @Input() name: Pick<ProductModel, 'name'>;
@@ -17,8 +18,12 @@ export class ProductComponent implements OnChanges{
 
   @Output() buy: EventEmitter<any> = new EventEmitter();
 
-  private inputs = {
+  @ViewChild('wrapper', {static: true}) wrapper: ElementRef;
 
+  @HostListener('click')
+  onClick() {
+    this.wrapper.nativeElement.style.border = '3px solid blue';
+    setTimeout(() => this.wrapper.nativeElement.style.border = '3px solid black', 1000)
   }
 
   ngOnChanges(changes: SimpleChanges) {

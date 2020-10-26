@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 
 import { ProductModel } from '../../../model/model';
@@ -6,7 +6,8 @@ import { ProductModel } from '../../../model/model';
 @Component({
   selector: 'app-cart-item',
   templateUrl: './cart-item.component.html',
-  styleUrls: ['./cart-item.component.scss']
+  styleUrls: ['./cart-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartItemComponent implements OnInit {
   @Input() cartItem: ProductModel;
