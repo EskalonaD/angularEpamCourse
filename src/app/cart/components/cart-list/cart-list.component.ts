@@ -16,6 +16,7 @@ export class CartListComponent implements OnInit, OnDestroy {
 
   totalPrice: string[];
   cartItems: ProductModel[];
+  totalAmount: number;
 
   private cartItemsSubscription: Subscription;
 
@@ -26,8 +27,10 @@ export class CartListComponent implements OnInit, OnDestroy {
       next: cartItems => {
         this.cartItems = cartItems;
         this.totalPrice = this.cartService.getTotalPriceArr(cartItems);
+        this.totalAmount = this.cartService.getTotalAmount(cartItems);
       }
     });
+
   }
 
   ngOnDestroy(): void {

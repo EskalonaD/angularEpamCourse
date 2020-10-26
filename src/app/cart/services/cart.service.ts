@@ -55,6 +55,13 @@ export class CartService {
     return priceArr;
   }
 
+  getTotalAmount(arr: ProductModel[]) {
+    return arr.reduce((amount, product) => {
+      amount += product.amount;
+      return amount;
+    },0);
+  }
+
   private deleteCartItems(): void {
     this.storage.deleteCartItems();
   }
