@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CartItemComponent } from '../components/cart-item/cart-item.component';
 import { CartListComponent } from '../components/cart-list/cart-list.component';
 import { CartService } from '../services/cart.service';
+import { SharedModule } from 'src/app/shared/module/shared.module';
 
 
 
@@ -15,7 +16,8 @@ import { CartService } from '../services/cart.service';
     CartService,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
   ],
   exports: [
     CartListComponent,
