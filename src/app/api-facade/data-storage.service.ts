@@ -69,40 +69,53 @@ export class DataStorageService {
   ];
 
   getProducts(): Observable<ProductModel[]> {
-    return of([...this.products.map(el => ({...el}))]);
+    return of([...this.products.map(el => ({ ...el }))]);
   }
 
   getCartItems(): Observable<ProductModel[]> {
-    return of([...this.cartItems.map(el => ({...el}))]);
+    return of([...this.cartItems.map(el => ({ ...el }))]);
   }
 
   deleteCartItems(): Observable<ProductModel[]> {
+    const items = {};
+
+    this.cartItems.forEach(item => {
+      items[item.name] = item;
+    });
+    this.products.forEach(product => {
+      if (items.hasOwnProperty(product.name)) {
+        product.amount += items[product.name].amount;
+        delete items[product.name];
+      }
+    });
+    this.products = (Object.values(items) as ProductModel[]).concat(this.products);
     this.cartItems = [];
+    
     return this.getCartItems();
   }
 
   moveProductToCart(productName: string): Observable<ProductModel[]> {
     let tempProduct: ProductModel;
     for (const product of this.products) {
-        if (product.name === productName) {
-          product.amount -= 1;
-          tempProduct = product;
-          break;
-        }
-        else if (product === this.products[this.products.length - 1]) {
-          throw new Error('wrong product was bought');
-        }
+      if (product.name === productName) {
+        product.amount -= 1;
+        tempProduct = product;
+        break;
       }
+      else if (product === this.products[this.products.length - 1]) {
+        throw new Error('wrong product was bought');
+      }
+    }
 
     for (const item of this.cartItems) {
-        if (item.name === productName) {
-          ++item.amount;
-          break;
-        }
-        else if (item === this.cartItems[this.cartItems.length - 1]) {
-          this.cartItems.push({...tempProduct});
-        }
+      if (item.name === productName) {
+        ++item.amount;
+        break;
       }
+      else if (item === this.cartItems[this.cartItems.length - 1]) {
+        this.cartItems.push({ ...tempProduct });
+      }
+    }
     return this.getProducts();
   }
 }
